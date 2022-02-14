@@ -38,7 +38,7 @@ Route::get('/adminregister',[App\Http\Controllers\AdminController::class,'regist
 Route::post('/adminlogin', [App\Http\Controllers\AdminHomeController::class, 'index'])->name('adminlogin');
 Route::prefix('admin')->group(function() {
     Route::get('/login', [AdminLoginController::class,'showLoginForm'])->name('admin.login');
-    Route::post('/login', [AdminLoginController::class,'login'])->name('admin.login.submit');
+    Route::post('/login', [AdminLoginController::class,'login']);
     Route::get('logout', [AdminHomeController::class,'index'])->name('admin.logout');
 });
 Route::get('/email',[AttendanceController::class,'basic_email'])->name('email');

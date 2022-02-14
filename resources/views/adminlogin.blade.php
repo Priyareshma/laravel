@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.adminapp')
 
 @section('content')
 <div class="container">
@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.login.submit') }}">
+                    <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
 
                         <div class="row mb-3">
