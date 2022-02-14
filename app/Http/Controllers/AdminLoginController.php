@@ -6,9 +6,11 @@ use App\Models\Admin;
 use Auth;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AdminLoginController extends Controller
 {
+    protected $redirectTo = '/admin';
     public function __construct()
     {
         $this->middleware('guest:admin')->except('logout');
@@ -16,9 +18,21 @@ class AdminLoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('fullcalender');
+        return view('adminlogin');
     }
 
+    public function logout(Request $request)
+    {
+        $this->guard();
+
+        $request->session()->invalidate();
+
+        return redirect()->route('admin.login');
+    }
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
     public function login(Request $request)
     {
 
@@ -38,3 +52,4 @@ class AdminLoginController extends Controller
 
     }
 }
+

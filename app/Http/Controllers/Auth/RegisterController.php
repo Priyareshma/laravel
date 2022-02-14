@@ -71,7 +71,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        User::create([
             'name' => $data['name'],
             'dob' =>$data['dob'],
             'gender'=>$data['gender'],
@@ -84,10 +84,11 @@ class RegisterController extends Controller
         ]);
         $name=$data['name'];
         $email=$data['email'];
-        Mail::send(['name'=>'name'], $name, function($message) {
+        $semail=User::where('email', $email)->first();
+        Mail::send(['user'=>$semail], $name, function($message) use($semail) {
            $otp = rand(10000,99999);
            $message->from('reshma.ofc@gmail.com','Laravel Otp');
-           $message->to('reshma.zeoner@gmail.com','Laravel')->subject(' Laravel Otp for Registered Employee '.$otp);
+           $message->to($semail->email,$semail->name)->subject(' Laravel Otp for Registered Employee '.$otp);
 
         });
     }
