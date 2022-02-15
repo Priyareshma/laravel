@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RestoController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminLoginController;
@@ -39,6 +40,8 @@ Route::post('/adminlogin', [App\Http\Controllers\AdminHomeController::class, 'in
 Route::prefix('admin')->group(function() {
     Route::get('/login', [AdminLoginController::class,'showLoginForm'])->name('admin.login');
     Route::post('/login', [AdminLoginController::class,'login']);
-    Route::get('logout', [AdminHomeController::class,'index'])->name('admin.logout');
+    Route::post('logout', [AdminHomeController::class,'index'])->name('admin.logout');
 });
 Route::get('/email',[AttendanceController::class,'basic_email'])->name('email');
+Route::get('change-password', [ChangePasswordController::class,'index'])->name('change.password.index');
+Route::post('change-password', [ChangePasswordController::class,'store'])->name('change.password');

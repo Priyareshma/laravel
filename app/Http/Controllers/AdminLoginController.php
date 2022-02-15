@@ -33,23 +33,23 @@ class AdminLoginController extends Controller
     {
         return Auth::guard('admin');
     }
-    // public function login(Request $request)
-    // {
+    public function login(Request $request)
+    {
 
-    //     $this->validate($request, [
-    //         'email'    => 'required|email',
-    //         'password' => 'required|min:6'
-    //     ]);
+        $this->validate($request, [
+            'email'    => 'required|email',
+            'password' => 'required|min:6'
+        ]);
 
-    //     if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' =>   $request->password])) {
+        if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' =>   $request->password])) {
 
-    //         return redirect()->intended(route('admin.dashboard'));
-    //     }
-    //     else{
+            return redirect()->intended(route('admin.dashboard'));
+        }
+        else{
 
-    //     return redirect()->back()->withInput($request->only('email'));
-    //     }
+        return redirect()->back()->withInput($request->only('email'));
+        }
 
-    // }
+    }
 }
 

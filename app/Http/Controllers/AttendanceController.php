@@ -86,6 +86,7 @@ class AttendanceController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $form_data = array(
             'name'       =>   $request->name,
             'dob'        =>   $request->dob,
@@ -95,6 +96,15 @@ class AttendanceController extends Controller
             'phone'      =>   $request->phone,
             'email'      =>   $request->email
                 );
+        $request->validate([
+                        'name' => ['required', 'string', 'max:255'],
+                        'dob' => ['required'],
+                        'gender'=>['required'],
+                        'date_of_joining' =>['required'],
+                        'address' => ['required', 'string', 'max:255'],
+                        'phone' => ['required', 'string', 'min:10','max:10'],
+
+                ]);
 
         User::whereId($id)->update($form_data);
 

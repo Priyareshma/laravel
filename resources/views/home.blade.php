@@ -7,6 +7,11 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
                 <div class="card-body">
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                <p>{{ session('success') }}</p>
+                            </div>
+                        @endif
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         {{  $is_update ? 'Update' : 'Start' }} Attendance

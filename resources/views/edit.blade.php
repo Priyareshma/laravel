@@ -11,6 +11,9 @@
                     <form method="POST" action="{{ route('attendance.update',$data->id) }}">
                         @csrf
                         @method('PATCH')
+                        @foreach ($errors->all() as $error)
+                            <p class="text-danger">{{ $error }}</p>
+                        @endforeach
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
