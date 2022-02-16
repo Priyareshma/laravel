@@ -15,7 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-
+            $count=Attendance::where('emp_id',3)->count();
+            dd($count);
     }
     public function register()
     {
@@ -93,5 +94,9 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function dashboard()
+    {
+        return view('admindashboard');
     }
 }

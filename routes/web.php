@@ -6,6 +6,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminHomeController;
+// use App\Http\Controllers\AdminAuthController;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FullCalenderController;
@@ -45,3 +46,13 @@ Route::prefix('admin')->group(function() {
 Route::get('/email',[AttendanceController::class,'basic_email'])->name('email');
 Route::get('change-password', [ChangePasswordController::class,'index'])->name('change.password.index');
 Route::post('change-password', [ChangePasswordController::class,'store'])->name('change.password');
+// Route::get('aadmin/login',[AdminAuthController::class,'getLogin'])->name('adminLogin');
+// Route::post('aadmin/login', [AdminAuthController::class,'postLogin'])->name('adminLoginPost');
+// Route::get('aadmin/logout', [AdminAuthController::class,'logout'])->name('adminLogout');
+
+// Route::group(['prefix' => 'admin','middleware' => 'adminauth'], function () {
+// 	// Admin Dashboard
+// 	Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+//});
+Route::get('/index',[AdminController::class,'index'])->name('index');
+
