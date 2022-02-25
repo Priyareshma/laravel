@@ -17,6 +17,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
     /**
@@ -30,5 +31,9 @@ class HomeController extends Controller
             ->where('emp_id', Auth::id())->exists();
         return view('home', compact('is_update'));
     }
+    public function admin(){
+
+        return view('adminlogin');
+       }
 
 }

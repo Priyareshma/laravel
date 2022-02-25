@@ -1,11 +1,10 @@
 <?php
-
+use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\RestoController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Auth\AdminLoginController;
-use App\Http\Controllers\AdminHomeController;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FullCalenderController;
@@ -34,20 +33,27 @@ Route::Resource('/attendance',AttendanceController::class);
 
 Route::get('fullcalender', [FullCalenderController::class, 'index'])->name('fullcalender');
 Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax'])->name('fullcalenderAjax');
-Route::Resource('/admin',AdminController::class);
+Route::Resource('/adminresource',AdminController::class);
 Route::get('/adminregister',[App\Http\Controllers\AdminController::class,'register'])->name('adminregister');
-Route::post('/adminlogin', [App\Http\Controllers\AdminHomeController::class, 'index'])->name('adminlogin');
 Route::get('/email',[AttendanceController::class,'basic_email'])->name('email');
 Route::get('change-password', [ChangePasswordController::class,'index'])->name('change.password.index');
 Route::post('change-password', [ChangePasswordController::class,'store'])->name('change.password');
 Route::get('/index',[AdminController::class,'index'])->name('index');
 
-Route::namespace("Admin")->prefix('admin')->group(function(){
-    Route::get('/', [AdminHomeController::class,'index'])->name('admin.home');
+// Route::namespace("Admin")->prefix('admin')->group(function(){
+//     Route::get('/', [AdminHomeController::class,'index'])->name('admin.home');
+//     Route::namespace('auth')->group(function(){
+//     Route::get('/login', [AdminLoginController::class,'showLoginForm'])->name('admin.login');
+//     Route::post('/login', [AdminLoginController::class,'login']);
+//     Route::post('logout', [AdminHomeController::class,'index'])->name('admin.logout');
+//     });
+//    });
+
+   Route::namespace("Admin")->prefix('admin')->group(function(){
+    Route::get('/', [HomeController::class,'index'])->name('admin.home');
     Route::namespace('Auth')->group(function(){
-    Route::get('/login', [AdminLoginController::class,'showLoginForm'])->name('admin.login');
-    Route::post('/login', [AdminLoginController::class,'login']);
-    Route::post('logout', [AdminHomeController::class,'index'])->name('admin.logout');
+    Route::get('/login', [LoginController::class,'showLoginForm'])->name('admin.login');
+    Route::post('/login', [LoginController::class,'login']);
+    Route::post('logout', [LoginController::class,'logout'])->name('admin.logout');
     });
    });
-

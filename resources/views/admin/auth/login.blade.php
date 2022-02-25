@@ -1,4 +1,4 @@
-@extends('layouts.adminapp')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container">
@@ -10,9 +10,6 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
-                            @if(session('error'))
-                                <div class="alert alert-danger">{{session('error')}}</div>
-                            @endif
 
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -70,5 +67,3 @@
     </div>
 </div>
 @endsection
-
-

@@ -1,16 +1,6 @@
-@extends('layouts.adminapp')
+@extends('admin.layouts.app')
 
 @section('content')
-@foreach ($sample as $data )
-    {{ $data->name }}
-    {{ $data->email }}
-    {{ $data->gender }}
-    {{ $data->dob }}
-    {{ $data->date_of_joining }}
-    {{ $data->address }}
-    {{ $data->phone }}
-    {{ $data->Total_working_days }}
-@endforeach
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">

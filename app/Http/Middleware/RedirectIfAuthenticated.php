@@ -17,22 +17,23 @@ class RedirectIfAuthenticated
      * @param  string|null  ...$guards
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next,$guard = null)
+    public function handle($request, Closure $next, $guard = null)
     {
-        // $guard = empty($guard) ? [null] : $guard;
+        if (Auth::guard($guard)->check()) {
 
-            if (Auth::guard($guard)->check()) {
-                if($guard == "admin"){
-                    //user was authenticated with admin guard.
+            if($guard == "admin"){
+                //user was authenticated with admin guard.
+                //dd("admin guard");
                 return redirect()->route('admin.home');
-                } else {
-                    //default guard.
-                    return redirect()->route('home');
-                }
+            } else {
+                //default guard.
+                return redirect()->route('home');
             }
 
+        }
 
         return $next($request);
 
     }
 }
+

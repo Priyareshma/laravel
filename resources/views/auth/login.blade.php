@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Employee Login') }}
-                <a href="{{ route('attendance.create') }} ">Admin Login</a>
+                <a href="{{ route('admin.login') }}">Admin Login</a>
                 </div>
 
                 <div class="card-body">
