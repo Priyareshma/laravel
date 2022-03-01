@@ -29,7 +29,7 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-            return view('adminlogin');
+
     }
 
     /**
@@ -111,14 +111,14 @@ class AttendanceController extends Controller
         return redirect()->route('list')->with('success', 'Data is successfully updated');
     }
     public function basic_email() {
-        // $data = array('name'=>"Laravel Otp");
-        // Mail::send(['name'=>'name'], $data, function($message) {
-        //    $otp = rand(1000,9999);
-        //    $message->from('reshma.ofc@gmail.com','Laravel Otp');
-        //    $message->to('reshma.zeoner@gmail.com', 'Laravel')->subject(' Laravel Otp for Registered Employee '.$otp);
+        $data = array('name'=>"Laravel Otp");
+        Mail::send(['name'=>'name'], $data, function($message) {
+           $otp = rand(1000,9999);
+           $message->from('reshma.ofc@gmail.com','Laravel Otp');
+           $message->to('reshma.zeoner@gmail.com', 'Laravel')->subject(' Laravel Otp for Registered Employee '.$otp);
 
-        // });
-        // echo "Basic Email Sent. Check your inbox.";
+        });
+        echo "Basic Email Sent. Check your inbox.";
 
      }
 

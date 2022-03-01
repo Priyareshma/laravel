@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Employee Register') }}
-                <a href="{{ route('adminregister') }}">{{__('Admin Register') }}</a></div>
+                <a href="{{ route('adminresource.create') }}">{{__('Admin Register') }}</a></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'gender'=>['required'],
             'date_of_joining' =>['required'],
             'address' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'min:10'],
+            'phone' => ['required', 'string', 'min:10','max:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
 
@@ -82,15 +82,15 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
 
         ]);
-        $name=$data['name'];
-        $email=$data['email'];
-        $semail=User::where('email', $email)->first();
-        Mail::send(['user'=>$semail], $name, function($message) use($semail) {
-           $otp = rand(10000,99999);
-           $message->from('reshma.ofc@gmail.com','Laravel Otp');
-           $message->to($semail->email,$semail->name)->subject(' Laravel Otp for Registered Employee '.$otp);
+        // $name=$data['name'];
+        // $email=$data['email'];
+        // $semail=User::where('email', $email)->first();
+        // Mail::send(['user'=>$semail], $name, function($message) use($semail) {
+        //    $otp = rand(10000,99999);
+        //    $message->from('reshma.ofc@gmail.com','Laravel Otp');
+        //    $message->to($semail->email,$semail->name)->subject(' Laravel Otp for Registered Employee '.$otp);
 
-        });
+        // });
     }
 
 }

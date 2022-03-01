@@ -17,14 +17,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
 
-    }
-    public function register()
-    {
-        return view('adminregister');
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -33,7 +26,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('adminlogin');
+        return view('adminregister');
 
     }
 
@@ -51,7 +44,7 @@ class AdminController extends Controller
             'password'=>Hash::make($request['password']),
 
         ]);
-        return redirect()->route('adminresource.create');
+        return redirect()->route('admin.login');
     }
 
     /**
@@ -98,5 +91,6 @@ class AdminController extends Controller
     {
         //
     }
+
 
 }
