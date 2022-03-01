@@ -9,21 +9,12 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-@foreach ($sample as $data )
-    {{ $data->name }}
-    {{ $data->email }}
-    {{ $data->gender }}
-    {{ $data->dob }}
-    {{ $data->date_of_joining }}
-    {{ $data->address }}
-    {{ $data->phone }}
-    {{ $data->Total_working_days }}
-@endforeach
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Admin Dashboard</div>
+                <div class="card-header">Employee Details</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -35,15 +26,27 @@
                         <thead>
                             <tr>
                                 <td>Name</td>
+                                <td>Email</td>
                                 <td>Date of Birth</td>
                                 <td>Gender</td>
                                 <td>Date of Joining</td>
-                                <td>Email</td>
                                 <td>Address</td>
                                 <td>Phone</td>
                                 <td>Total Working Days</td>
                             </tr>
                         </thead>
+                        @foreach ($sample as $data )
+                            <tr>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->email }}</td>
+                            <td>{{ $data->dob }}</td>
+                            <td>{{ $data->gender }}</td>
+                            <td>{{ $data->date_of_joining }}</td>
+                            <td>{{ $data->address }}</td>
+                            <td>{{ $data->phone }}</td>
+                            <td>{{ $data->Total_working_days }}</td>
+                            </tr>
+                        @endforeach
                     </table>
 
                 </div>
@@ -51,9 +54,10 @@
         </div>
     </div>
 </div>
-@endsection
 <script>
     $(document).ready(function(){
         $('#table').DataTable();
     });
 </script>
+@endsection
+
